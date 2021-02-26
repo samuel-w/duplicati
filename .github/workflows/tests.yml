@@ -29,7 +29,8 @@ jobs:
     - name: Build Duplicati
       run: |
         nuget restore Duplicati.sln
-        msbuild -p:Configuration=Release Duplicati.sln
+        msbuild -p:Configuration=Release -p:DefineConstants=ENABLE_GTK Duplicati.sln
+        cp -r Duplicati/Server/webroot Duplicati/GUI/Duplicati.GUI.TrayIcon/bin/Release/webroot
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
