@@ -58,17 +58,17 @@ jobs:
         name: build artifacts (${{ matrix.os }})
         path: "${{ env.build_directory }}"
 
-    - name: Run Unit Tests (Linux and macOS)
-      if: matrix.os != 'windows-latest'
-      run: |
-        nuget install NUnit.Runners -Version 3.12.0 -OutputDirectory nunit
-        mono nunit/NUnit.ConsoleRunner.3.12.0/tools/nunit3-console.exe Duplicati/UnitTest/bin/Release/Duplicati.UnitTest.dll
+    # - name: Run Unit Tests (Linux and macOS)
+    #   if: matrix.os != 'windows-latest'
+    #   run: |
+    #     nuget install NUnit.Runners -Version 3.12.0 -OutputDirectory nunit
+    #     mono nunit/NUnit.ConsoleRunner.3.12.0/tools/nunit3-console.exe Duplicati/UnitTest/bin/Release/Duplicati.UnitTest.dll
 
-    - name: Run Unit Tests (Windows)
-      if: matrix.os == 'windows-latest'
-      run: |
-        nuget install NUnit.Runners -Version 3.12.0 -OutputDirectory nunit
-        nunit/NUnit.ConsoleRunner.3.12.0/tools/nunit3-console.exe Duplicati/UnitTest/bin/Release/Duplicati.UnitTest.dll
+    # - name: Run Unit Tests (Windows)
+    #   if: matrix.os == 'windows-latest'
+    #   run: |
+    #     nuget install NUnit.Runners -Version 3.12.0 -OutputDirectory nunit
+    #     nunit/NUnit.ConsoleRunner.3.12.0/tools/nunit3-console.exe Duplicati/UnitTest/bin/Release/Duplicati.UnitTest.dll
 
   ui_tests:
     name: UI tests
